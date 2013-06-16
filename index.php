@@ -57,7 +57,6 @@ if(isset($_POST['kanji']) && strlen($_POST['kanji']) > 0) {
 ?>
 <hr />
 <p><strong>about</strong></p>
-<p>kanji lists obtained from here: <a href="http://www.tanos.co.uk/jlpt/jlpt5/kanji/">n5</a>, <a href="http://www.tanos.co.uk/jlpt/jlpt4/kanji/">n4</a>, <a href="http://www.tanos.co.uk/jlpt/jlpt3/kanji/">n3</a>, <a href="http://www.tanos.co.uk/jlpt/jlpt2/kanji/">n2</a>, <a href="http://www.tanos.co.uk/jlpt/jlpt1/kanji/">n1</a> with this:</p>
-<pre>var a = document.querySelectorAll('td:first-child a[href*=kanjiid]');b = "";for(var i=0; i&lt;a.length; i++) { b = b + a[i].innerHTML.trim() }</pre>
+<p>kanji lists obtained from here: <a href="http://www.mext.go.jp/a_menu/shotou/new-cs/youryou/syo/koku/001.htm">kyōiku</a> (n5-2), <a href="http://www.aozora.gr.jp/kanji_table/">jōyō</a>+<a href="https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji#History">2010 revision</a> (n1)
 </body>
 </html>
