@@ -1,6 +1,8 @@
 <?php
 
-require_once('kanji.php');
+$type = (isset($_GET['type']) ? $_GET['type'] : 'tangorin');
+require_once('kanji_'.$type.'.php');
+
 function str_split_unicode($str, $l = 0) {
 	if ($l > 0) {
 		$ret = array();
@@ -29,10 +31,14 @@ color: #3cbf08;
 </style>
 </head>
 <body>
+<p>type: <a href="?type=tangorin">tangorin</a> / <a href="?type=kyoikujoyo">kyōiku+jōyō</a></p>
 <form method="POST" action="" />
 	<p>your kanji go here: <input type="text" name="kanji"/></p>
 </form>
 <?php
+
+$overall_all = 0;
+$overall_of = 0;
 
 if(isset($_POST['kanji']) && strlen($_POST['kanji']) > 0) {
 	$pd = str_split_unicode($_POST['kanji']);
@@ -50,13 +56,16 @@ if(isset($_POST['kanji']) && strlen($_POST['kanji']) > 0) {
 				}
 			$all++;
 			}
-		echo '<br />('.$of.'/'.$all.')</p>';
+		$overall_all += $all;
+		$overall_of += $of;
+		echo '<br />('.$of.'/'.$all.')';
+		echo '<br />[overall: '.$overall_of.'/'.$overall_all.' - missing: '.($overall_all-$overall_of).']</p>';
 		}
 	}
 
 ?>
 <hr />
 <p><strong>about</strong></p>
-<p>kanji lists obtained from here: <a href="http://www.mext.go.jp/a_menu/shotou/new-cs/youryou/syo/koku/001.htm">kyōiku</a> (n5-2), <a href="http://www.aozora.gr.jp/kanji_table/">jōyō</a>+<a href="https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji#History">2010 revision</a> (n1)
+<p>kanji lists obtained from here: <?php echo $from_str; ?></p>
 </body>
 </html>
